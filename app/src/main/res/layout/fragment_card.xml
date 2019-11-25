@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayoutayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/motionLayout"
-    android:clipChildren="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CardFragment">
+    android:clipChildren="false"
+    app:layoutDescription="@xml/scene_main">
 
     <FrameLayout
         android:id="@+id/bottomCard"
@@ -19,7 +18,7 @@
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="40dp"
             android:layout_gravity="bottom|end"
-            android:src="@drawable/ic_like"/>
+            android:src="@drawable/ic_thumb_up_black_24dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -27,7 +26,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginBottom="40dp"
             android:layout_gravity="bottom|start"
-            android:src="@drawable/ic_close"/>
+            android:src="@drawable/ic_thumb_down_black_24dp"/>
 
     </FrameLayout>
 
@@ -43,7 +42,7 @@
             android:layout_marginBottom="40dp"
             android:id="@+id/likeButton"
             android:layout_gravity="bottom|end"
-            android:src="@drawable/ic_like"/>
+            android:src="@drawable/ic_thumb_up_black_24dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -52,7 +51,7 @@
             android:layout_marginBottom="40dp"
             android:id="@+id/passButton"
             android:layout_gravity="bottom|start"
-            android:src="@drawable/ic_close"/>
+            android:src="@drawable/ic_thumb_down_black_24dp"/>
 
     </FrameLayout>
 
@@ -72,4 +71,4 @@
         android:layout_height="0dp"
         android:layout_width="0dp"/>
 
-</androidx.constraintlayout.motion.widget.MotionLayoutayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

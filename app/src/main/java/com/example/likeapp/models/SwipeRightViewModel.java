@@ -22,11 +22,11 @@ public class SwipeRightViewModel extends ViewModel {
     private SwipeRightCardModel bottomCard;
 
     public SwipeRightCardModel getBottomCard() {
-        return data[currentIndex + 1];
+        return data[(currentIndex + 1) % data.length];
     }
 
     public SwipeRightCardModel getTopCard() {
-        return data[currentIndex];
+        return data[currentIndex % data.length];
     }
 
     public SwipeRightViewModel(){

@@ -33,6 +33,11 @@ public class CardFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_card, container, false);
 
+        mTopCard = v.findViewById(R.id.topCard);
+        mBottomCard = v.findViewById(R.id.bottomCard);
+        mMotionLayout = v.findViewById(R.id.motionLayout);
+
+
         final SwipeRightViewModel swipeRightViewModel = ViewModelProviders.of(this).get(SwipeRightViewModel.class);
 
         swipeRightViewModel.getStream().observe(this, new Observer<SwipeRightModel>() {
