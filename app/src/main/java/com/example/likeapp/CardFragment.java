@@ -1,6 +1,7 @@
 package com.example.likeapp;
 
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.constraintlayout.motion.widget.MotionLayout;
@@ -13,9 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.example.likeapp.models.SwipeRightModel;
 import com.example.likeapp.models.SwipeRightViewModel;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 public class CardFragment extends Fragment {
 
@@ -37,8 +42,12 @@ public class CardFragment extends Fragment {
         mBottomCard = v.findViewById(R.id.bottomCard);
         mMotionLayout = v.findViewById(R.id.motionLayout);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mTopCard.setClipToOutline(true);
+            mBottomCard.setClipToOutline(true);
+        }
 
-        final SwipeRightViewModel swipeRightViewModel = ViewModelProviders.of(this).get(SwipeRightViewModel.class);
+        final SwipeRightViewModel swipeRightViewModel = SwipeRightViewModel.getInstance();
 
         swipeRightViewModel.getStream().observe(this, new Observer<SwipeRightModel>() {
             @Override
@@ -83,8 +92,22 @@ public class CardFragment extends Fragment {
     }
 
     private void bind(SwipeRightModel model){
-        mTopCard.setBackgroundColor(model.getTop().getBackgroundColor());
-        mBottomCard.setBackgroundColor(model.getBottom().getBackgroundColor());
+
+        Picasso.with(this.getContext()).load(model.getTop().getMainImageLink())
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_STORE)
+                .memoryPolicy(MemoryPolicy.NO_STORE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .into((ImageView) mTopCard.getChildAt(0));
+
+        Picasso.with(this.getActivity()).load(model.getBottom().getMainImageLink())
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .networkPolicy(NetworkPolicy.NO_STORE)
+                .memoryPolicy(MemoryPolicy.NO_STORE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .into((ImageView) mBottomCard.getChildAt(0));
+//        mTopCard.setBackgroundColor(model.getTop().getBackgroundColor());
+//        mBottomCard.setBackgroundColor(model.getBottom().getBackgroundColor());
     }
 
 }

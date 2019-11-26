@@ -1,21 +1,21 @@
 package com.example.likeapp.models;
 
-import androidx.annotation.ColorInt;
+
+import android.graphics.Bitmap;
 
 public class SwipeRightCardModel {
 
-    @ColorInt
-    private int backgroundColor;
+    private String mainImageLink;
 
-    public SwipeRightCardModel(int backgroundColor) {
-        this.backgroundColor = backgroundColor;
+    public SwipeRightCardModel(String mainImageLink) {
+        this.mainImageLink = mainImageLink;
     }
 
-    public int getBackgroundColor() {
-        return backgroundColor;
+    public String getMainImageLink() {
+        return mainImageLink;
     }
 
-    public void setBackgroundColor(int backgroundColor) {
-        this.backgroundColor = backgroundColor;
+    public void setMainImageLink(String mainImageLink) {
+        this.mainImageLink = mainImageLink;
     }
 }

@@ -1,0 +1,17 @@
+{
+  "userId": "cad235de-b767-4d0f-beee-97b470aa1345",
+  "name": "Valera",
+  "age": 19,
+  "interests": [
+    "voleyball",
+    "hacking",
+    "music",
+    "films"
+  ],
+  "photos": [
+    "pictures/picture-1.jpg"
+  ],
+  "avatar": "pictures/picture-1.jpg",
+  "growth": 189,
+  "location": "Saint-Petersburg"
+}

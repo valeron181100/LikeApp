@@ -2,34 +2,51 @@ package com.example.likeapp.models;
 
 import android.graphics.Color;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class SwipeRightViewModel extends ViewModel {
+
+    private static SwipeRightViewModel instance;
+
     private MutableLiveData<SwipeRightModel> stream = new MutableLiveData<>();
 
     private int currentIndex = 0;
 
-    private SwipeRightCardModel[] data = {
-            new SwipeRightCardModel(Color.parseColor("red")),
-            new SwipeRightCardModel(Color.parseColor("blue")),
-            new SwipeRightCardModel(Color.parseColor("green"))
-    };
+    private ArrayList<SwipeRightCardModel> data = new ArrayList<>();
 
     private SwipeRightCardModel topCard;
 
     private SwipeRightCardModel bottomCard;
 
+    public static SwipeRightViewModel getInstance() {
+        if(instance == null){
+            instance = new SwipeRightViewModel();
+        }
+        return instance;
+    }
+
     public SwipeRightCardModel getBottomCard() {
-        return data[(currentIndex + 1) % data.length];
+        return data.get((currentIndex + 1) % data.size());
     }
 
     public SwipeRightCardModel getTopCard() {
-        return data[currentIndex % data.length];
+        return data.get(currentIndex % data.size());
     }
 
-    public SwipeRightViewModel(){
+    private SwipeRightViewModel(){
+
+        if(data.size() == 0){
+            for (int i = 0; i < 10; i++) {
+                data.add(new SwipeRightCardModel("https://picsum.photos/1080/1920"));
+            }
+        }
+
         topCard = getTopCard();
         bottomCard = getBottomCard();
         updateStream();
